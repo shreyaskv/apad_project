@@ -1,2 +1,2 @@
 # adap_project
-Team project for ADAP 2023
+Team project for APAD 2023
