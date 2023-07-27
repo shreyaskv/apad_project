@@ -29,6 +29,7 @@ const styleText = {
 
 const FormItem = Form.Item;
 
+var result
 class Signin extends Component {
   
   constructor(props) {
@@ -78,9 +79,28 @@ handleSubmit(event) {
     }
 
     else {
-        
-            window.location.href = "/";
-    }
+      let url = "http://localhost:5000/login"
+  
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+      })
+      .then(response => {
+        if (response.ok) {
+            result = response.json()
+            .then(result => {
+              if (result.validLogin === 'true'){
+                alert("Username valid")
+              }
+              else{
+                alert("Username invalid")
+              }
+            }
+            )
+        }
+      }
+      )
+  }
 //  --!>
 }
 
