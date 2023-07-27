@@ -28,7 +28,7 @@ const styleText = {
 };
 
 const FormItem = Form.Item;
-
+var result
 class Signup extends Component {
   
   constructor(props) {
@@ -79,7 +79,27 @@ handleSubmit(event) {
 
     else {
         
-            window.location.href = "/";
+      let url = "http://localhost:5000/signup"
+  
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+      })
+      .then(response => {
+        if (response.ok) {
+            result = response.json()
+            .then(result => {
+              if (result.user_exists === 'true'){
+                alert("User already exists")
+              }
+              else{
+                alert("Signed up")
+              }
+            }
+            )
+        }
+      }
+      )
     }
 //  --!>
 }
