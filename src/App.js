@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginPage from './components/LoginPage';
 import Project from './components/Projects';
+import create_Project from './components/createProject';
 const AppRouter = () => (
     <BrowserRouter>
         <MuiThemeProvider>
@@ -14,6 +15,7 @@ const AppRouter = () => (
                 <Route path="/UserSignIn" component={UserSignInPage} />
                 <Route path="/Login" component={LoginPage} />
                 <Route path="/project" component={Project} />
+                <Route path="/createProject" component={create_Project} />
             </Switch>
         </MuiThemeProvider>
     </BrowserRouter>
