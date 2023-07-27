@@ -66,27 +66,27 @@ handleSubmit(event) {
     }
 
     else {
-    //   let url = "http://localhost:5000/login"
+      let url = "http://localhost:5000/enter_project"
   
-    //   fetch(url, {
-    //     method: 'POST',
-    //     body: JSON.stringify(body)
-    //   })
-    //   .then(response => {
-    //     if (response.ok) {
-    //         result = response.json()
-    //         .then(result => {
-    //           if (result.validProjectId === 'true'){
-    //             alert("Welcome to the Hardware page")
-    //           }
-    //           else{
-    //             alert("ProjectId invalid")
-    //           }
-    //         }
-    //         )
-    //     }
-    //   }
-    //   )
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+      })
+      .then(response => {
+        if (response.ok) {
+            result = response.json()
+            .then(result => {
+              if (result.projectExits === 'true'){
+                alert("Welcome to the Hardware page")
+              }
+              else{
+                alert("ProjectId invalid")
+              }
+            }
+            )
+        }
+      }
+      ).catch(() => console.log("can't access " + url + " response. "))
   }
 //  --!>
 }

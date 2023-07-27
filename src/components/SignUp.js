@@ -99,8 +99,9 @@ handleSubmit(event) {
             )
         }
       }
-      )
+      ) .catch(() => console.log("can't access " + url + " response. "))
     }
+
 //  --!>
 }
 
