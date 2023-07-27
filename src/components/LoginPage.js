@@ -91,6 +91,7 @@ handleSubmit(event) {
             .then(result => {
               if (result.validLogin === 'true'){
                 alert("Username valid")
+                window.location.href = "/project";
               }
               else{
                 alert("Username invalid")
