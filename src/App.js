@@ -6,6 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginPage from './components/LoginPage';
 import Project from './components/Projects';
 import create_Project from './components/createProject';
+import hardware from './components/Hardware_page';
+
 const AppRouter = () => (
     <BrowserRouter>
         <MuiThemeProvider>
@@ -16,6 +18,7 @@ const AppRouter = () => (
                 <Route path="/Login" component={LoginPage} />
                 <Route path="/project" component={Project} />
                 <Route path="/createProject" component={create_Project} />
+                <Route path="/hardware" component={hardware} />
             </Switch>
         </MuiThemeProvider>
     </BrowserRouter>
