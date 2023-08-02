@@ -1,0 +1,27 @@
+  .hardware-button {
+    background-color:#216C55;
+    width: 100%;
+    height: 30px;
+    background: #216C55;
+  }
+
+ table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+/* Style the table header cells (th) */
+th {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Style the table data cells (td) */
+td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+}

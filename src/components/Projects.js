@@ -76,8 +76,9 @@ handleSubmit(event) {
         if (response.ok) {
             result = response.json()
             .then(result => {
-              if (result.projectExits === 'true'){
+              if (result.project_exists === 'true'){
                 alert("Welcome to the Hardware page")
+                window.location.href = "/hardware";
               }
               else{
                 alert("ProjectId invalid")
