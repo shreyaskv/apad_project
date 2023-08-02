@@ -26,53 +26,21 @@ const styleText = {
 };
 
 var result
-
-// function DataFetchingComponent (){
-//     const [HW1Capacity, setHW1Capacity] = useState(['10']);
-//     const [HW2Capacity, setHW2Capacity] = useState(['10']);
-//     const [HW1Availability, setHW1Availability] = useState(['10']);
-//     const [HW2Availability, setHW2Availability] = useState(['10']);
-
-  
-//     useEffect(() => {
-//       fetch('http://localhost:5000/getHardwareData')
-//         .then((response) => response.json())
-//         .then((data) => {
-//         // .then((HW1Capacity) => setHW1Capacity(HW1Capacity))
-//         // .then((HW2Capacity) => setHW2Capacity(HW2Capacity))
-//         // .then((HW1Availability) => setHW1Availability(HW1Availability))
-//         // .then((HW2Availability) => setHW2Availability(HW2Availability))
-//         setHW1Capacity(data.HW1Capacity);
-//         setHW2Capacity(data.HW2Capacity);
-//         setHW1Availability(data.HW1Availability);
-//         setHW2Availability(data.HW2Availability);
-//         })
-//     }, []);
-//     return [HW1Capacity, HW2Capacity, HW1Availability, HW2Availability];
-// }
-
-// const {HW1Capacity, HW2Capacity, HW1Availability, HW2Availability} = DataFetchingComponent();
-
 class Hardware extends Component{
     constructor(props){
         super(props)
         this.state = {
-            hardware_set1_checkin : '',
-            hardware_set2_checkin : '',
-            hardware_set1_checkout: '',
-            hardware_set2_checkout: '',
+            hardware_set1 : '',
+            hardware_set2 : '',
             hardware_set1_capacity:'',
             hardware_set1_availability :'',
             hardware_set2_capacity:'',
             hardware_set2_availability:''
         }
-        this.handlehardware_set1_checkin = this.handlehardware_set1_checkin.bind(this)
-        this.handlehardware_set2_checkin = this.handlehardware_set2_checkin.bind(this)
-        this.handlehardware_set1_checkout = this.handlehardware_set1_checkout.bind(this)
-        this.handlehardware_set2_checkout = this.handlehardware_set2_checkout.bind(this)
+        this.handlehardware_set1 = this.handlehardware_set1.bind(this)
+        this.handlehardware_set2 = this.handlehardware_set2.bind(this)
         this.handlecheckin = this.handlecheckin.bind(this)
         this.handlecheckout = this.handlecheckout.bind(this)
-        // this.state.hardware_set1_capacity, this.state.hardware_set2_capacity, this.state.hardware_set1_availability, this.state.hardware_set2_availability = DataFetchingComponent()
     }
 
     componentDidMount(){
@@ -93,53 +61,15 @@ class Hardware extends Component{
 
     }
 
-    // handleSet1CapacityChange = event => {
-    //     this.setState({
-    //         username: event.target.value
-    //     });
-    // }
-
-    // handleSet2CapacityChange = event => {
-    //     this.setState({
-    //         username: event.target.value
-    //     });
-    // }
-
-    // handleSet1AvalabilityChange = event => {
-    //     this.setState({
-    //         username: event.target.value
-    //     });
-    // }
-
-    // handleSet2AvailabilityChange = event => {
-    //     this.setState({
-    //         username: event.target.value
-    //     });
-    // }
-
- 
-
-    handlehardware_set1_checkin = event => {
+    handlehardware_set1 = event => {
         this.setState({
-            hardware_set1_checkin: event.target.value
+            hardware_set1: event.target.value
         })
     }
 
-    handlehardware_set1_checkout = event => {
+    handlehardware_set2 = event => {
         this.setState({
-            hardware_set1_checkout: event.target.value
-        })
-    }
-
-    handlehardware_set2_checkin = event => {
-        this.setState({
-            hardware_set2_checkin: event.target.value
-        })
-    }
-
-    handlehardware_set2_checkout = event => {
-        this.setState({
-            hardware_set2_checkout: event.target.value
+            hardware_set2: event.target.value
         })
     }
 
@@ -150,13 +80,13 @@ class Hardware extends Component{
         console.log(this.state)
     
         var body = {
-            qty1: this.state.hardware_set1_checkin,
-            qty2: this.state.hardware_set2_checkin
+            qty1: this.state.hardware_set1,
+            qty2: this.state.hardware_set2
         }
     
         console.log(body);
     
-        if (this.state.hardware_set1_checkin === "" && this.state.hardware_set2_checkin === "") {
+        if (this.state.hardware_set1 === "" && this.state.hardware_set2 === "") {
             alert('Please enter checkout value')
         }
     
@@ -173,8 +103,8 @@ class Hardware extends Component{
                 .then(result => {
                   if (result.checke_in === 'true'){
                     alert("Checked in")
-                    window.location.href = "/project";
-                    // this.state.hardware_set1_capacity, this.state.hardware_set2_capacity, this.state.hardware_set1_availability, this.state.hardware_set2_availability = DataFetchingComponent();
+                    this.componentDidCatch
+                    window.location.reload();
                   }
                   else{
                     alert("Could not check in")
@@ -194,13 +124,13 @@ class Hardware extends Component{
         console.log(this.state)
     
         var body = {
-            qty1: this.state.hardware_set1_checkout,
-            qty2: this.state.hardware_set2_checkout
+            qty1: this.state.hardware_set1,
+            qty2: this.state.hardware_set2
         }
     
         console.log(body);
     
-        if (this.state.hardware_set1_checkout === "" && this.state.hardware_set2_checkout === "") {
+        if (this.state.hardware_set1 === "" && this.state.hardware_set2=== "") {
             alert('Please enter checkout value')
         }
     
@@ -217,8 +147,8 @@ class Hardware extends Component{
                 .then(result => {
                   if (result.check_out === 'true'){
                     alert("Checked out")
-                    // this.state.hardware_set1_capacity, this.state.hardware_set2_capacity, this.state.hardware_set1_availability, this.state.hardware_set2_availability = DataFetchingComponent();
-                    window.location.href = "/project";
+                    this.componentDidCatch
+                    window.location.reload();
                   }
                   else{
                     alert("Could not check out")
@@ -243,8 +173,7 @@ class Hardware extends Component{
                         <th>Hardware</th>
                         <th>Capacity</th>
                         <th>Availability</th>
-                        <th>checkin_quantity</th>
-                        <th>checkout_quantity</th>
+                        <th>quantity</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -252,11 +181,9 @@ class Hardware extends Component{
                             <td> Set 1</td>
                             <td>{this.state.hardware_set1_capacity}</td>
                             <td>{this.state.hardware_set1_availability}</td>
-                            <td> <input type="text" value={this.state.hardware_set1_checkin} onChange={this.handlehardware_set1_checkin} />
+                            <td> <input type="text" value={this.state.hardware_set1} onChange={this.handlehardware_set1} />
                             </td>
-                            <td> <input type="text" value={this.state.hardware_set2_checkin} onChange={this.handlehardware_set2_checkin} />
-                            </td>
-0                            <Button
+                            <Button
                             type="primary"
                             htmlType="small"
                             onClick={this.handlecheckin}
@@ -269,9 +196,7 @@ class Hardware extends Component{
                             <td> Set 2</td>
                             <td>{this.state.hardware_set2_capacity}</td>
                             <td>{this.state.hardware_set2_availability}</td>
-                            <td> <input type="text" value={this.state.hardware_set1_checkout} onChange={this.handlehardware_set1_checkout} />
-                            </td>
-                            <td> <input type="text" value={this.state.hardware_set2_checkout} onChange={this.handlehardware_set2_checkout} />
+                            <td> <input type="text" value={this.state.hardware_set2} onChange={this.handlehardware_set2} />
                             </td>
                             <Button
                             type="primary"
