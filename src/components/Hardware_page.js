@@ -27,29 +27,29 @@ const styleText = {
 
 var result
 
-function DataFetchingComponent (){
-    const [HW1Capacity, setHW1Capacity] = useState(['10']);
-    const [HW2Capacity, setHW2Capacity] = useState(['10']);
-    const [HW1Availability, setHW1Availability] = useState(['10']);
-    const [HW2Availability, setHW2Availability] = useState(['10']);
+// function DataFetchingComponent (){
+//     const [HW1Capacity, setHW1Capacity] = useState(['10']);
+//     const [HW2Capacity, setHW2Capacity] = useState(['10']);
+//     const [HW1Availability, setHW1Availability] = useState(['10']);
+//     const [HW2Availability, setHW2Availability] = useState(['10']);
 
   
-    useEffect(() => {
-      fetch('http://localhost:5000/getHardwareData')
-        .then((response) => response.json())
-        .then((data) => {
-        // .then((HW1Capacity) => setHW1Capacity(HW1Capacity))
-        // .then((HW2Capacity) => setHW2Capacity(HW2Capacity))
-        // .then((HW1Availability) => setHW1Availability(HW1Availability))
-        // .then((HW2Availability) => setHW2Availability(HW2Availability))
-        setHW1Capacity(data.HW1Capacity);
-        setHW2Capacity(data.HW2Capacity);
-        setHW1Availability(data.HW1Availability);
-        setHW2Availability(data.HW2Availability);
-        })
-    }, []);
-    return [HW1Capacity, HW2Capacity, HW1Availability, HW2Availability];
-}
+//     useEffect(() => {
+//       fetch('http://localhost:5000/getHardwareData')
+//         .then((response) => response.json())
+//         .then((data) => {
+//         // .then((HW1Capacity) => setHW1Capacity(HW1Capacity))
+//         // .then((HW2Capacity) => setHW2Capacity(HW2Capacity))
+//         // .then((HW1Availability) => setHW1Availability(HW1Availability))
+//         // .then((HW2Availability) => setHW2Availability(HW2Availability))
+//         setHW1Capacity(data.HW1Capacity);
+//         setHW2Capacity(data.HW2Capacity);
+//         setHW1Availability(data.HW1Availability);
+//         setHW2Availability(data.HW2Availability);
+//         })
+//     }, []);
+//     return [HW1Capacity, HW2Capacity, HW1Availability, HW2Availability];
+// }
 
 // const {HW1Capacity, HW2Capacity, HW1Availability, HW2Availability} = DataFetchingComponent();
 
@@ -73,6 +73,24 @@ class Hardware extends Component{
         this.handlecheckin = this.handlecheckin.bind(this)
         this.handlecheckout = this.handlecheckout.bind(this)
         // this.state.hardware_set1_capacity, this.state.hardware_set2_capacity, this.state.hardware_set1_availability, this.state.hardware_set2_availability = DataFetchingComponent()
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:5000/getHardwareData')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+            this.setState({
+                hardware_set1_capacity:data.H1.capacity, 
+                hardware_set1_availability :data.H1.availability,
+                hardware_set2_capacity:data.H2.capacity,
+                hardware_set2_availability:data.H2.availability
+            })
+            console.log(this.state);
+        })
+   
+
     }
 
     // handleSet1CapacityChange = event => {
