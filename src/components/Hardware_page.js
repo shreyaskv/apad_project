@@ -42,8 +42,17 @@ class Hardware extends Component{
         this.handlecheckin = this.handlecheckin.bind(this)
         this.handlecheckout = this.handlecheckout.bind(this)
     }
-
     componentDidMount(){
+      console.log(window.sessionStorage.getItem("uservalid"))
+      console.log(window.sessionStorage.getItem("projectvalid"))
+
+      if(window.sessionStorage.getItem("projectvalid")==false 
+      || window.sessionStorage.getItem("projectvalid")==null)
+        {
+          alert("Join a project to view Hardware page")
+          window.location.href = "/Login";
+        }
+        
         fetch('http://localhost:5000/getHardwareData')
         .then((response) => response.json())
         .then((data) => {
@@ -57,6 +66,8 @@ class Hardware extends Component{
             })
             console.log(this.state);
         })
+        
+        
    
 
     }
@@ -149,7 +160,8 @@ class Hardware extends Component{
                     window.location.reload();
                   }
                   else{
-                    alert("Could not check out")
+                    alert("Could not check out requested quantity,checked out ")
+                    window.location.reload();
                   }
                 }
                 )
@@ -165,7 +177,8 @@ class Hardware extends Component{
             <div style={bgstyle}>
             <h1 style={{color:'#171732'}}>1</h1>
             <Paper style={stylePaper}>
-                <table>
+                <div style={{marginTop:100}}>
+                <table style={{marginTop:100}}>
                     <thead>
                         <tr>
                         <th>Hardware</th>
@@ -207,6 +220,7 @@ class Hardware extends Component{
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </Paper>
             </div>
         );

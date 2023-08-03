@@ -45,6 +45,19 @@ class createProject extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
 }
 
+componentDidMount()
+{
+  console.log(window.sessionStorage.getItem("logout"))
+  console.log(window.sessionStorage.getItem("uservalid")==="false")
+  if(window.sessionStorage.getItem("logout")==="true" || window.sessionStorage.getItem("uservalid")===null)
+  {
+    
+    alert("Login to enter projects page")
+    window.location.href = "/Login";
+  }
+  
+}
+
 handleprojectnameChange = event => {
     this.setState({
         projectname: event.target.value
