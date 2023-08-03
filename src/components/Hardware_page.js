@@ -101,9 +101,8 @@ class Hardware extends Component{
             if (response.ok) {
                 result = response.json()
                 .then(result => {
-                  if (result.checke_in === 'true'){
+                  if (result.check_in === 'true'){
                     alert("Checked in")
-                    this.componentDidCatch
                     window.location.reload();
                   }
                   else{
@@ -147,7 +146,6 @@ class Hardware extends Component{
                 .then(result => {
                   if (result.check_out === 'true'){
                     alert("Checked out")
-                    this.componentDidCatch
                     window.location.reload();
                   }
                   else{
