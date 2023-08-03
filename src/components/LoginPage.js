@@ -89,8 +89,9 @@ handleSubmit(event) {
         if (response.ok) {
             result = response.json()
             .then(result => {
+              window.sessionStorage.setItem("uservalid",result.validLogin)
               if (result.validLogin === 'true'){
-                alert("Username valid")
+                alert("Login successful")
                 window.location.href = "/project";
               }
               else{

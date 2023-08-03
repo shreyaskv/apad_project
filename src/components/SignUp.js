@@ -80,8 +80,7 @@ handleSubmit(event) {
     else {
         
       let url = "http://localhost:5000/signup"
-  
-      fetch(url, {
+      fetch(url,{
         method: 'POST',
         body: JSON.stringify(body)
       })

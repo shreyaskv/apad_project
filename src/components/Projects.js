@@ -41,7 +41,18 @@ class Projects extends Component {
     this.handleprojectIdChange = this.handleprojectIdChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 }
-
+componentDidMount()
+{
+  const yourSessionVariable = sessionStorage.getItem('uservalid');
+  console.log(yourSessionVariable)
+  if(yourSessionVariable===null)
+  {
+    console.log(yourSessionVariable)
+    alert("Login to enter projects page")
+    window.location.href = "/Login";
+  }
+  
+}
 handleprojectIdChange = event => {
     this.setState({
         projectId: event.target.value
@@ -76,6 +87,7 @@ handleSubmit(event) {
         if (response.ok) {
             result = response.json()
             .then(result => {
+              window.sessionStorage.setItem("projectvalid",result.project_exists)
               if (result.project_exists === 'true'){
                 alert("Welcome to the Hardware page")
                 window.location.href = "/hardware";
@@ -119,7 +131,7 @@ handleSubmit(event) {
               htmlType="submit"
               className="signup-form-button"
             >
-              SUBMIT
+              JOIN
             </Button>
             Or <a href="/createProject">Create a new project</a>
           </FormItem>
