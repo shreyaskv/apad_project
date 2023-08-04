@@ -43,16 +43,16 @@ class Hardware extends Component{
         this.handlecheckout = this.handlecheckout.bind(this)
     }
     componentDidMount(){
-      console.log(window.sessionStorage.getItem("uservalid"))
-      console.log(window.sessionStorage.getItem("projectvalid"))
-
-      if(window.sessionStorage.getItem("projectvalid")==false 
-      || window.sessionStorage.getItem("projectvalid")==null)
-        {
-          alert("Join a project to view Hardware page")
-          window.location.href = "/Login";
-        }
-        
+      const yourSessionVariable1 = sessionStorage.getItem('uservalid');
+      const yourSessionVariable2 = sessionStorage.getItem('projectvalid');
+  
+  if(yourSessionVariable1 =="null" || yourSessionVariable2 =="null")
+  {
+    alert("Login and join a project to enter hardware page")
+    this.props.history.push('/Login');
+    //window.location.href = "/Login";
+  }
+       
         fetch('http://localhost:5000/getHardwareData')
         .then((response) => response.json())
         .then((data) => {

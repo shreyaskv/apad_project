@@ -47,13 +47,14 @@ class createProject extends Component {
 
 componentDidMount()
 {
-  console.log(window.sessionStorage.getItem("logout"))
-  console.log(window.sessionStorage.getItem("uservalid")==="false")
-  if(window.sessionStorage.getItem("logout")==="true" || window.sessionStorage.getItem("uservalid")===null)
+  const yourSessionVariable = sessionStorage.getItem('uservalid');
+  
+  if(yourSessionVariable=="null")
   {
-    
+    console.log(yourSessionVariable)
     alert("Login to enter projects page")
-    window.location.href = "/Login";
+    this.props.history.push('/Login');
+    //window.location.href = "/Login";
   }
   
 }
