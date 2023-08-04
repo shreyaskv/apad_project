@@ -44,12 +44,13 @@ class Projects extends Component {
 componentDidMount()
 {
   const yourSessionVariable = sessionStorage.getItem('uservalid');
-  console.log(yourSessionVariable)
-  if(yourSessionVariable===null)
+  
+  if(yourSessionVariable=="null")
   {
     console.log(yourSessionVariable)
     alert("Login to enter projects page")
-    window.location.href = "/Login";
+    this.props.history.push('/Login');
+    //window.location.href = "/Login";
   }
   
 }

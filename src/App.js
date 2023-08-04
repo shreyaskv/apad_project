@@ -9,6 +9,8 @@ import create_Project from './components/createProject';
 import hardware from './components/Hardware_page';
 
 const AppRouter = () => (
+
+    
     <BrowserRouter>
         <MuiThemeProvider>
             <Navbar/>

@@ -7,7 +7,7 @@ const Navbar=() => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const isUserLoggedIn = localStorage.getItem("uservalid") 
+    const isUserLoggedIn =  window.sessionStorage.getItem("uservalid")
     setLoggedIn(isUserLoggedIn);
   }, []);
 

@@ -93,6 +93,7 @@ handleSubmit(event) {
               }
               else{
                 alert("Signed up")
+                window.location.href = "/Login";
               }
             }
             )
