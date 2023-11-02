@@ -19,7 +19,8 @@ the University of Utah POWDER program (https://powderwireless.net/ ). The overal
 the app is predefined, but your team can be creative in adding features that exceed the
 stakeholder needs.
 A simplified software architecture of the app is shown in Figure 1 below
+
+<img width="897" alt="image" src="https://github.com/shreyaskv/apad_project/assets/17931918/ad906fc1-6122-4d9c-a9ca-91e2c248f729">
+
 Figure 1: Simplified Software Architecture of a HaaS app
-This project will be done with your chosen project team, and you will submit just one
-deliverable for the entire team during each phase. Each team should contain no more than 5 to
-6 students.
+
