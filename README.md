@@ -1,3 +1,4 @@
+This repository has the front end code for the project
 # Team Project for APAD
 Team Members List: Shruthi Sundaranand, Harini Ala, Joshua George, Abhinav Sharma, and Shreyas KV
 
